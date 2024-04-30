@@ -35,8 +35,14 @@ Building a Food🍔 ordering App🚀🚀
 Types of import/export
  - Named import/export
  - Default import/export
-Create Separate files for different components
+Created Separate files for different components
  - Keep hardcoded data in config or constants file
-build a feature about Top rated Restaurants uisng state variables(useState)
-Use of useEffect hook to handle api calls
+- built a feature about Top rated Restaurants uisng state variables(useState)
+- Use of useEffect hook to handle api calls
+- Used Swiggy's api to show live data about restaurants🔥
+- Implemented Toggle feature of Log In and Log out using state variables
+- Created Shimmer Ui effect for good user experience👤
+- Implemented client side Routing configuration
+- Linked different routes for navigation between different components
+- Implemented dynamic routing
         
