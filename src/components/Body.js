@@ -2,23 +2,29 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import CarouselCard from "./CarouselCard";
+import useOnlineStatus from "../config/useOnlineStatus";
 const Body=()=>{
     const[listOfRestaurants,setListOfRestaurants]=useState([]);
     const[filteredrestaurant,setFilteredRestaurant]=useState([]);
     const[searchText,setsearchText]=useState("");
+    const[carousals,setCarousal]=useState([]);
     useEffect(()=>{
         fetchData();
     },[]);
     const fetchData=async()=>{
         const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.5204443&lng=87.3119227&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json=await data.json();
-        //console.log(json);
+        console.log(json);
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);  //-->optional chaining
         setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setCarousal(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
+       
     }
    
     
-
+    const OnlineStatus=useOnlineStatus();
+    if(OnlineStatus==false) return <h1>Looks Like Your Internet connection Is Lost⚠️.Please Check your Internet Connection</h1>
 
     return listOfRestaurants.length===0?<Shimmer/>:(
         <div className='body'>
@@ -44,11 +50,22 @@ const Body=()=>{
                  
 
             </div>
+            <div className="carousalCard-container">
+           
+                {   
+                    carousals.map((card)=>(
+                        <CarouselCard key={card.id} cardData={card}/>
+                    ))
+                }
+
+            </div>
             <div className='res-container'>
                 {
                     filteredrestaurant.map((restaurant)=>(
                        <Link className="links" key={key=restaurant.info.id} to={"/restaurants/"+restaurant.info.id} ><RestaurantCard  resData={restaurant}/></Link> 
+                       
                     ))
+                    
                 }
                 
             </div>

@@ -45,4 +45,8 @@ Created Separate files for different components
 - Implemented client side Routing configuration
 - Linked different routes for navigation between different components
 - Implemented dynamic routing
-        
+- Built About section using classbased components
+- Optimized my app using using single responsibility principles
+   - Built custom hooks
+   - built online offline functionality
+   - Lazy loading
