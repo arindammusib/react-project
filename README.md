@@ -50,3 +50,11 @@ Created Separate files for different components
    - Built custom hooks
    - built online offline functionality
    - Lazy loading
+- built accordion features on itemlist
+  - toggle between showitems and hide items
+# redux
+ - install @reduxjs/toolkit and react-redux
+ - Built our store
+ - Connect the store to my App
+ - Built add to cart items,remove cart items feature
+ 🚀🚀

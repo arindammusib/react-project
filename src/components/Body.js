@@ -27,31 +27,35 @@ const Body=()=>{
     if(OnlineStatus==false) return <h1>Looks Like Your Internet connection Is Lost⚠️.Please Check your Internet Connection</h1>
 
     return listOfRestaurants.length===0?<Shimmer/>:(
-        <div className='body'>
-            <div className='filter'>
-                <div className="search">
-                    <input type="text" placeholder="search here" value={searchText} onChange={(e)=>{
+        <div className='border-y-8 '>
+            <div className='filter flex'>
+                <div className="m-4 p-4 ">
+                    <input className="border border-solid border-black cursor-text" type="text" placeholder="        search here" value={searchText} onChange={(e)=>{
                         setsearchText(e.target.value);
                         
 
                     }}/>
-                    <button className="search-btn" onClick={()=>{
+                    <button className="px-2 py-1 m-2 sm:py-2 bg-green-200 rounded-md " onClick={()=>{
                         const fileteredList=listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurant(fileteredList);
                     }}>Search</button>
 
                 </div>
-                <button className="filter-btn" onClick={()=>{
-                const filteredList=filteredrestaurant.filter((res)=>res.info.avgRating>4.2);
+                <div className="px-2 py-1 m-2 flex items-center">
+                <button className="filter-btn sm:px-2 px-4 py-2 bg-orange-200 rounded-lg sm:rounded-sm " onClick={()=>{
+                const filteredList=filteredrestaurant.filter((res)=>res.info.avgRating>4.3);
                 setFilteredRestaurant(filteredList);
              }
                 }>Top Rated Restaurnats</button>
+                </div>
             
                  
 
             </div>
-            <div className="carousalCard-container">
-           
+            
+            
+            <div className="my-2 py-2 flex   overflow-x-auto ">
+                
                 {   
                     carousals.map((card)=>(
                         <CarouselCard key={card.id} cardData={card}/>
@@ -59,10 +63,12 @@ const Body=()=>{
                 }
 
             </div>
-            <div className='res-container'>
+          
+            
+            <div className='res-container flex flex-wrap items-center mx-12'>
                 {
                     filteredrestaurant.map((restaurant)=>(
-                       <Link className="links" key={key=restaurant.info.id} to={"/restaurants/"+restaurant.info.id} ><RestaurantCard  resData={restaurant}/></Link> 
+                       <Link className="links" key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id} ><RestaurantCard  resData={restaurant}/></Link> 
                        
                     ))
                     

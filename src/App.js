@@ -8,8 +8,11 @@ import Error from './components/Error';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Shimmer from './components/Shimmer';
+import { Provider } from 'react-redux';
+import appStore from './config/appStore';
+import Cart from './components/Cart';
 
-const Grocery=lazy(()=>import('./components/Grocery'));
+
 const About=lazy(()=>import('./components/About'));
 
 
@@ -19,10 +22,12 @@ const About=lazy(()=>import('./components/About'));
 const App=()=>{
    
     return(
+        <Provider store={appStore}>
         <div className='app'>
             <Header/>
             <Outlet/>
         </div>
+        </Provider>
     )
 }
 const appRouter=createBrowserRouter([
@@ -42,9 +47,11 @@ const appRouter=createBrowserRouter([
                 path:'/contact',
                 element:<Contact/>
             },
+            
             {
-                path:'/grocery',
-                element:<Suspense fallback={<Shimmer/>}><Grocery/></Suspense>
+                path:'/cart',
+                element:<Suspense><Cart/></Suspense>
+
             },
             {
                 path:'/restaurants/:resId',

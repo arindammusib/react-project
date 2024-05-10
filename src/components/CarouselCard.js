@@ -5,17 +5,19 @@ const CarouselCard=(props)=>{
     const{cardData}=props;
     const{
        
-        imageId
+        imageId,
+        
 
 
 
     }=cardData;
     
     return(
-        <div className="carousal-card">
-            <img src={carousal_url+imageId}/>
-           
-        </div>
+       
+        <img className=" w-28 lg:w-40" src={carousal_url+imageId}/>
+        
+        
+        
     )
 };
 export default CarouselCard;
