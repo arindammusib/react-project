@@ -10,19 +10,19 @@ const Header=()=>{
     const {loginInfo}=useContext(UserContext);
     //subscribing to the store
     const cartItems=useSelector((store)=>store.cart.items);
-    console.log(cartItems);
+    //console.log(cartItems);
     return(
-        <div className="flex justify-between bg-orange-300 md:bg-orange-300  lg:bg-green-100 shadow-md ... sticky top-0 sm:p-1">
+        <div className="flex justify-between bg-orange-300 md:bg-orange-300  lg:bg-green-100 shadow-md ... sticky top-0 sm:p-1 md:flex-row ">
             <div className='logo-container'>
               
                     <img 
-                    className=' w-34 lg:w-28'
+                    className=' w-32 lg:w-28'
                     src={LOGO_URL}/>
 
             </div>
                 
-                <div className='flex items-center'>
-                    <ul className="flex m-3 p-3 sm:m-1 sm:p-1" >
+                <div className='flex items-center '>
+                    <ul className="flex m-3 p-3 " >
                         <li className="p-4" >Online Status:{onlineStatus?"✅":"🔴"}</li>
                         <li className="p-4"><Link to='/'>Home</Link></li>
                         <li className="p-4"><Link to='/about'>About Us</Link></li>

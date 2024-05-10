@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",

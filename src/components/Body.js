@@ -15,7 +15,7 @@ const Body=()=>{
     const fetchData=async()=>{
         const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.5204443&lng=87.3119227&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json=await data.json();
-        console.log(json);
+       // console.log(json);
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);  //-->optional chaining
         setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setCarousal(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
@@ -28,7 +28,7 @@ const Body=()=>{
 
     return listOfRestaurants.length===0?<Shimmer/>:(
         <div className='border-y-8 '>
-            <div className='filter flex'>
+            <div className='filter flex flex-wrap justify-center m-0 md:w-4/5 w-full  gap-6'>
                 <div className="m-4 p-4 ">
                     <input className="border border-solid border-black cursor-text" type="text" placeholder="        search here" value={searchText} onChange={(e)=>{
                         setsearchText(e.target.value);
@@ -54,7 +54,7 @@ const Body=()=>{
             </div>
             
             
-            <div className="my-2 py-2 flex   overflow-x-auto ">
+            <div className="my-1 py-1 flex   overflow-x-auto ">
                 
                 {   
                     carousals.map((card)=>(

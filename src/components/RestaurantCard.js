@@ -14,7 +14,7 @@ const RestaurantCard=(props)=>{
     }=resData?.info;
     
         return(
-            <div className="flex">
+            <div className="flex ">
         <div className='res-card m-4 p-4 w-[240px] bg-gray-100 rounded overflow-hidden hover:bg-gray-300 shadow-lg ' >
             <img  className=' w-full h-36 object-cover rounded-md 'src={CDN_URL+cloudinaryImageId} alt='res-logo'/>
             
